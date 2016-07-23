@@ -27,6 +27,10 @@ Just install the zip any way your are custom with, updates will be served in the
 
 == Changelog ==
 
+=== 0.0.2 admin page ===
+* update functionality
+* admin page
+
 === 0.0.1 first alpha ===
 * initial setup
 * initial commit

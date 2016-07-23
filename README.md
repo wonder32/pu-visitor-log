@@ -40,7 +40,11 @@ filters | contents
 
 ## changelog
 
-## 0.0.1 (19 july, 2016)
+## 0.0.2 admin page (23 july, 2016)
+* update functionality
+* admin page
+
+## 0.0.1 (22 july, 2016)
 * Initial commit
 * Commit git files README, LICENSE etc.
 * Commit [WONDER32 / pu-visitor-log](https://www.puddinq.nl/wip/stefan-schotvanger/)

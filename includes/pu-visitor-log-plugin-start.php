@@ -29,6 +29,8 @@ class pu_visitor_log_plugin_start
         add_action( 'pu-dash-activation', ['pu_visitor_log_un_install', 'pu_visitor_log_install']);
         // localize language files
         add_action( 'plugins_loaded', [$this, 'pu_visitor_log_textdomain']);
+        // load admin settings page
+        add_action( 'admin_menu', [$this, 'load_admin_page'] );
     }
 
     public function activate()
@@ -67,4 +69,14 @@ class pu_visitor_log_plugin_start
 
     }
 
+
+    /***********************************
+     *  load Admin page
+     ***********************************/
+
+    public function load_admin_page() {
+
+        $admin_page = new pu_visitor_log_admin_page();
+
+    }
 }

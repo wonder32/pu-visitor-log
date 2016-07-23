@@ -20,6 +20,8 @@ class pu_visitor_log_un_install
 
     static function pu_visitor_log_install()
     {
+
+        add_action( 'admin_menu', array( __CLASS__, 'admin_settings_menu' ) );
 //        add_option('pu_visitor_log_user_roles', array('administrator' => 'true'));
 //        add_option('pu_visitor_log_show_widgets', array('dashboard_right_now' => 'true'));
 //        add_option('pu_visitor_log_widget_content', 'Edit this text or use html, the media uploader, and shortcodes to create your own widget.');
@@ -39,5 +41,14 @@ class pu_visitor_log_un_install
 //        delete_option('pu_visitor_log_widget_content');
 //        delete_option('pu_visitor_log_widget_title');
 //        delete_option('pu_visitor_log_avail_dashboard_widgets');
+    }
+
+    /********************************
+     *      Admin settingspage
+     ********************************/
+
+    static function admin_settings_menu()
+    {
+
     }
 }
