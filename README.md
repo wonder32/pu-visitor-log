@@ -40,6 +40,11 @@ filters | contents
 
 ## changelog
 
+## 0.0.3 (de)activation (24 july, 2016)
+* (de)activation class
+* register (de)activation
+* save some options
+
 ## 0.0.2 admin page (23 july, 2016)
 * update functionality
 * admin page

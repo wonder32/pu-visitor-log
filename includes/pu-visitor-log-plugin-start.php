@@ -17,7 +17,9 @@ class pu_visitor_log_plugin_start
     {
         add_action('init', array($this, 'init'));
 
-        register_activation_hook(PULAFILE, [$this, 'activate']);
+        register_activation_hook(PULAFILE, ['pu_visitor_log_un_install', 'pu_visitor_log_install']);
+
+        register_deactivation_hook(PULAFILE, ['pu_visitor_log_un_install', 'pu_visitor_log_uninstall']);
 
         // load and execute update checker
         $this->check_for_updates();
@@ -25,18 +27,15 @@ class pu_visitor_log_plugin_start
 
     public function init()
     {
-        // hook add options in activation hook
-        add_action( 'pu-dash-activation', ['pu_visitor_log_un_install', 'pu_visitor_log_install']);
+
         // localize language files
         add_action( 'plugins_loaded', [$this, 'pu_visitor_log_textdomain']);
         // load admin settings page
         add_action( 'admin_menu', [$this, 'load_admin_page'] );
+
     }
 
-    public function activate()
-    {
-        do_action('pu-dash-activation');
-    }
+
     /************************************
      *  if plugin page check for updates
      ************************************/

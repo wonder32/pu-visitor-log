@@ -27,6 +27,11 @@ Just install the zip any way your are custom with, updates will be served in the
 
 == Changelog ==
 
+=== 0.0.3 (de)activation ===
+* (de)activation class
+* register (de)activation
+* save some options
+
 === 0.0.2 admin page ===
 * update functionality
 * admin page
