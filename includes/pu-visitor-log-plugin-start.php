@@ -17,7 +17,7 @@ class pu_visitor_log_plugin_start
     {
         add_action('init', array($this, 'init'));
 
-        register_activation_hook(PULAFILE, ['pu_visitor_log_un_install', 'pu_visitor_log_install']);
+//        register_activation_hook(PULAFILE, ['pu_visitor_log_un_install', 'pu_visitor_log_install']);
 
         register_deactivation_hook(PULAFILE, ['pu_visitor_log_un_install', 'pu_visitor_log_uninstall']);
 

@@ -27,6 +27,10 @@ Just install the zip any way your are custom with, updates will be served in the
 
 == Changelog ==
 
+=== 0.0.4 settings ===
+* working settings group
+* register setting linked to settings group
+
 === 0.0.3 (de)activation ===
 * (de)activation class
 * register (de)activation

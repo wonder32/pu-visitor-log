@@ -27,9 +27,10 @@ class pu_visitor_log_un_install
 {
     //add_action( 'admin_menu', array( __CLASS__, 'admin_settings_menu' ) );
 
-    add_option('pu_visitor_log_settings', array('enable' => 'false', 'dash' => 'false'));
+    add_option('pu_visitor_settings', array('activate' => null, 'errors' => 'on'));
+    //add_option('pu_visitor_log_settings', array('enable' => 'false', 'dash' => 'false'));
 //        add_option('pu_visitor_log_widget_content', 'Edit this text or use html, the media uploader, and shortcodes to create your own widget.');
-        add_option('pu_visitor_log_widget_title', 'Custom Widget');
+       // add_option('pu_visitor_log_widget_title', 'Custom Widget');
 //        add_option('pu_visitor_log_avail_dashboard_widgets');
         // die('install');
 }
@@ -47,9 +48,9 @@ class pu_visitor_log_un_install
     {
 
 //        delete_option('pu_visitor_log_user_roles');
-        delete_option('pu_visitor_log_settings');
+        delete_option('pu_visitor_settings');
 //        delete_option('pu_visitor_log_widget_content');
-        delete_option('pu_visitor_log_widget_title');
+//        delete_option('pu_visitor_log_widget_title');
 //        delete_option('pu_visitor_log_avail_dashboard_widgets');
         // die('uninstall');
     }
