@@ -39,7 +39,8 @@ define ('PULAVERSION', '0.0.4');
     // settings
     require_once(PULADIR . 'includes/pu-visitor-log-settings.php');
 
-
+    // log functions
+    require_once(PULADIR . 'log/pu-visitor-log.php');
 
 // start the show
 if( class_exists( 'pu_visitor_log_plugin_start' ) ) {
