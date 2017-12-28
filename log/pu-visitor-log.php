@@ -40,7 +40,7 @@ class pu_visitor_log_hook
         $filename = 'pu.log';
 
         if(!file_exists($upload_dir.$filename)) {
-            $header = '' . php_EOL . php_EOL;
+            $header = '' . php_EOL;
             $file = file_put_contents($upload_dir.$filename, 'Puddinq Visitor Log');
         }
 

@@ -40,6 +40,13 @@ filters | contents
 
 ## changelog
 
+=== 0.0.5 Object orientated  ===
+* autoloader
+* Object orientated
+* PVL namespave
+* language files
+* (de)activation
+
 ## 0.0.4 settings (26 july, 2016)
 * working settings group
 * register setting linked to settings group

@@ -1,8 +1,8 @@
 === Pu Visitor Log ===
-Contributors: Stefan Schotvanger
+Contributors: Wonder32
 Tags: Puddinq, dashboard
 Requires at least: 4.5
-Tested up to: 4.5.3
+Tested up to: 4.9.2
 Stable tag: 0.0.1
 License: wtfpl
 License URI: http://www.wtfpl.net/
@@ -26,6 +26,15 @@ Just install the zip any way your are custom with, updates will be served in the
 1. The screenshot
 
 == Changelog ==
+
+## changelog
+
+=== 0.0.5 Object orientated  ===
+* autoloader
+* Object orientated
+* PVL namespave
+* language files
+* (de)activation
 
 === 0.0.4 settings ===
 * working settings group

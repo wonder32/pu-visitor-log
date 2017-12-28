@@ -21,25 +21,19 @@ function register_pu_dash_setings()
 
     add_settings_field(
         'activated',
-        'Activate',
+        __('Activate', 'pu-visitor-log'),
         'pu_visitor_activate',
         'pu-visitor-log',
         'pu_visitor_settings'
     );
     add_settings_field(
         'errors',
-        'Errors',
+	    __('Erord', 'pu-visitor-log'),
         'pu_visitor_errors',
         'pu-visitor-log',
         'pu_visitor_settings'
     );
-//    add_settings_field(
-//        'nf_ondernemersvereniging_ledendetail_template',
-//        'Leden detail pagina&apos;s',
-//        'nf_vereniging_leden_details',
-//        'pu-visitor-log',
-//        'pu_visitor_settings_a'
-//    );
+
 
 }
 

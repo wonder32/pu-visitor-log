@@ -1,6 +1,8 @@
 <?php
 
-class pu_visitor_log_admin_page
+namespace Pvl\Includes;
+
+class AdminPage
 {
 
     public function __construct()
@@ -25,7 +27,7 @@ class pu_visitor_log_admin_page
     public function pu_options()
     {
         echo '<div class="wrap">';
-        echo '<h2>Your Plugin Name</h2>';
+        echo '<h2>Pu Visitor Log</h2>';
         // Display whatever it is you want to show.
         echo 'Geef hier de mogelijkheden aan die u graag voor de leden van uw ondernemersverening beschikbaar wilt hebben.';
         echo '<form id="pu_visitor_settings" action="options.php" method="post">';

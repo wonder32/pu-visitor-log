@@ -3,7 +3,7 @@
 Plugin Name: Pu Visitor Log
 Plugin URI:  https://www.puddinq.com/plugins/pu-visitor-log/
 Description: Admin dashboard plugin for puddinq sites
-Version:     0.0.4
+Version:     0.0.5
 Author:      Stefan Schotvanger
 Author URI:  https://www.puddinq.nl/wip/stefan-schotvanger/
 License:     WTFPL
@@ -12,37 +12,37 @@ Domain Path: /languages
 Text Domain: pu-visitor-log
 */
 
+
+use Pvl\Includes\Backend;
+
+
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
     die;
 }
 
+require_once 'vendor/autoload.php';
+
 /************************************
  *      CONSTANTS
  ************************************/
 
-define ('PULADIR', plugin_dir_path(__FILE__));
-define ('PULAFILE', __FILE__);
-define ('PULANAME', 'pu-dashboard');
-define ('PULAVERSION', '0.0.4');
+define ('PVLADIR', plugin_dir_path(__FILE__));
+define ('PVLFILE', __FILE__);
+define ('PVLNAME', 'pu-visitor-log');
+define ('PVLVERSION', '0.0.5');
 
 /********************** **************
  *      LOAD FILES
  ************************************/
 
-    // plugin activation, uninstall and deactivation
-    require_once(PULADIR . 'includes/pu-visitor-log-un-install.php');
-    // plugin kickoff
-    require_once(PULADIR . 'includes/pu-visitor-log-plugin-start.php');
-    // admin screen
-    require_once(PULADIR . 'includes/pu-visitor-log-admin-page.php');
     // settings
-    require_once(PULADIR . 'includes/pu-visitor-log-settings.php');
+    require_once(PVLADIR . 'includes/pu-visitor-log-settings.php');
 
     // log functions
-    require_once(PULADIR . 'log/pu-visitor-log.php');
+//    require_once(PULADIR . 'log/pu-visitor-log.php');
 
 // start the show
-if( class_exists( 'pu_visitor_log_plugin_start' ) ) {
-    $pu_visitor_log_plugin_start = new pu_visitor_log_plugin_start;
+if( is_admin() ) {
+    $backend = new Backend;
 }
