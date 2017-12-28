@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pu Visitor Log\n"
-"POT-Creation-Date: 2017-12-27 20:26+0100\n"
-"PO-Revision-Date: 2017-12-27 20:27+0100\n"
+"POT-Creation-Date: 2017-12-28 19:48+0100\n"
+"PO-Revision-Date: 2017-12-28 19:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -20,12 +20,36 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: Includes/pu-visitor-log-settings.php:24
-msgid "Activate"
-msgstr "Activeer"
+#: Includes/AdminPage.php:52
+msgid "Settings."
+msgstr ""
 
-#: Includes/pu-visitor-log-settings.php:31
-msgid "Erord"
+#: Includes/AdminPage.php:53
+msgid "Here you can set which log parts should be activated."
+msgstr ""
+
+#: Includes/AdminPage.php:62
+msgid "Select parts"
+msgstr "Selecteer onderdelen"
+
+#: Includes/AdminPage.php:63
+msgid "You need to save the settings before they take effect."
+msgstr ""
+
+#: Includes/AdminPage.php:65
+msgid "Activate default wordpress logging."
+msgstr ""
+
+#: Includes/AdminPage.php:66
+msgid "Add Puddinq log screen to menu."
+msgstr ""
+
+#: Includes/Settings.php:456
+msgid "Choose File"
+msgstr ""
+
+#: Includes/Settings.php:473
+msgid "Choose Image"
 msgstr ""
 
 #: vendor/plugin-update-checker/github-checker.php:119
@@ -68,3 +92,6 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://www.puddinq.nl/wip/stefan-schotvanger/"
 msgstr ""
+
+#~ msgid "Activate"
+#~ msgstr "Activeer"

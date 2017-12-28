@@ -37,7 +37,7 @@ define ('PVLVERSION', '0.0.5');
  ************************************/
 
     // settings
-    require_once(PVLADIR . 'includes/pu-visitor-log-settings.php');
+    //require_once(PVLADIR . 'includes/pu-visitor-log-settings.php');
 
     // log functions
 //    require_once(PULADIR . 'log/pu-visitor-log.php');

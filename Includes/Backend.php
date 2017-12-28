@@ -13,20 +13,31 @@ namespace Pvl\Includes;
 
 class Backend
 {
-    public $version = PVLVERSION;
+    private $version = PVLVERSION;
+    
+    private $settings;
+    private $error_page;
+    private $admin_page;
 
 	public function __construct()
 	{
+		$this->filter = new Filter();       // hook to actions and filters
+
+		$this->settings = get_option('pu-visitor-log');
 
 		if (is_admin()) {
 			$this->startActivation();           // (de)activation hooks
-			$this->filter = new Filter();       // hook to actions and filters
-			$this->filter->add_action( 'init', $this, 'init' );
-			$this->filter->add_action( 'plugins_loaded', $this, 'load_textdomain' );
+			$this->initAdmin();
 			$this->check_for_updates();
-			$this->filter->run();
-
 		}
+
+		$this->filter->run();
+	}
+
+	public function initAdmin() {
+		$this->filter->add_action( 'plugins_loaded', $this, 'load_textdomain' );
+		$this->filter->add_action( 'admin_menu', $this, 'loadAdminPage' );
+		$this->filter->add_action( 'admin_menu', $this, 'loadErrorPage' );
 	}
 
 
@@ -35,16 +46,13 @@ class Backend
 		register_deactivation_hook(PVLFILE, array('Pvl\Includes\DeActivate', 'deactivate'));
 	}
 
+	public function loadErrorPage() {
+		if (false != $this->settings) {
+			$this->error_page = new ErrorPage($this->settings);
+		}
+	}
 
-    public function init()
-    {
 
-        // localize language files
-        add_action( 'plugins_loaded', [$this, 'load_textdomain']);
-        // load admin settings page
-        add_action( 'admin_menu', [$this, 'load_admin_page'] );
-
-    }
 
 	public function load_textdomain() {
 
@@ -88,9 +96,9 @@ class Backend
      *  load Admin page
      ***********************************/
 
-    public function load_admin_page() {
+    public function loadAdminPage() {
 
-        $admin_page = new AdminPage();
+        $this->admin_page = new AdminPage();
 
     }
 }

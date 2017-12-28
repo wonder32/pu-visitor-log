@@ -1,5 +1,6 @@
 <?php
 
+namespace Pvl\Includes;
 
 class Settings {
 	/**

@@ -17,7 +17,7 @@ class DeActivate
 	{
 
 //		wp_die('test this');
-	    add_option('pu_visitor_settings', array('activate' => null, 'errors' => 'on'));
+	    add_option('pu-visitor-log');
 
 	}
 
@@ -29,7 +29,7 @@ class DeActivate
     {
 
 //	    wp_die('test this');
-	    delete_option( 'pu_visitor_settings' );
+	    delete_option( 'pu-visitor-log' );
 
     }
 }
