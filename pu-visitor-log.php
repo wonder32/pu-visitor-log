@@ -14,6 +14,7 @@ Text Domain: pu-visitor-log
 
 
 use Pvl\Includes\Backend;
+use Pvl\Includes\Log;
 
 
 // If this file is called directly, abort.
@@ -32,17 +33,10 @@ define ('PVLFILE', __FILE__);
 define ('PVLNAME', 'pu-visitor-log');
 define ('PVLVERSION', '0.0.5');
 
-/********************** **************
- *      LOAD FILES
- ************************************/
-
-    // settings
-    //require_once(PVLADIR . 'includes/pu-visitor-log-settings.php');
-
-    // log functions
-//    require_once(PULADIR . 'log/pu-visitor-log.php');
 
 // start the show
 if( is_admin() ) {
+
+	// Settingspage, Errorpage
     $backend = new Backend;
 }

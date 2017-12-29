@@ -1,16 +1,17 @@
 === Pu Visitor Log ===
 Contributors: Wonder32
-Tags: Puddinq, dashboard
+Tags: Puddinq, visitor, log, pu
 Requires at least: 4.5
 Tested up to: 4.9.2
-Stable tag: 0.0.1
+Requires PHP: 5.6
+Stable tag: 4.5
 License: wtfpl
 License URI: http://www.wtfpl.net/
 
-If on Puddinq Visitors log adds a function to the footer hook that gets user information and saves it to pu_visitor.log in wp-content. This is for testing and is best enjoyed using "watch -n 2 tail -n 20 ~/pu_visitor.log".
+This plugin offers an easy wat to enable WordPress debug log without showing the errors. Complementary it can show a screen with the errors generated, this screen has an auto refresh functionality.
 
 == Description ==
-If on Puddinq Visitors log adds a function to the footer hook that gets user information and saves it to pu_visitor.log in wp-content. This is for testing and is best enjoyed using "watch -n 2 tail -n 20 ~/pu_visitor.log".
+This plugin offers an easy wat to enable WordPress debug log without showing the errors. Complementary it can show a screen with the errors generated, this screen has an auto refresh functionality.
 
 The plugin works in a few steps:
 
@@ -28,6 +29,9 @@ Just install the zip any way your are custom with, updates will be served in the
 == Changelog ==
 
 ## changelog
+
+=== 0.0.6 Optimization  ===
+*
 
 === 0.0.5 Object orientated  ===
 * autoloader

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pu Visitor Log\n"
-"POT-Creation-Date: 2017-12-28 19:48+0100\n"
-"PO-Revision-Date: 2017-12-28 19:49+0100\n"
+"POT-Creation-Date: 2017-12-29 20:05+0100\n"
+"PO-Revision-Date: 2017-12-29 20:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -20,58 +20,75 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: Includes/AdminPage.php:52
-msgid "Settings."
+#: Includes/AdminPage.php:20
+msgid "Puddinq Visitor Log Settings."
 msgstr ""
 
-#: Includes/AdminPage.php:53
+#: Includes/AdminPage.php:21 Includes/ErrorPage.php:21
+msgid "Pu visitor log"
+msgstr ""
+
+#: Includes/AdminPage.php:23
+msgid "pu-visitor-log"
+msgstr ""
+
+#: Includes/AdminPage.php:50
+msgid "Settings."
+msgstr "Instellingen."
+
+#: Includes/AdminPage.php:51
 msgid "Here you can set which log parts should be activated."
 msgstr ""
+"Hier kunt u instellen welke delen van het logboek moeten worden geactiveerd."
 
-#: Includes/AdminPage.php:62
+#: Includes/AdminPage.php:60
 msgid "Select parts"
 msgstr "Selecteer onderdelen"
 
-#: Includes/AdminPage.php:63
+#: Includes/AdminPage.php:61
 msgid "You need to save the settings before they take effect."
-msgstr ""
+msgstr "U moet de instellingen opslaan voordat ze van kracht zijn."
 
-#: Includes/AdminPage.php:65
+#: Includes/AdminPage.php:63
 msgid "Activate default wordpress logging."
-msgstr ""
+msgstr "Standaard wordpress logging activeren"
 
-#: Includes/AdminPage.php:66
+#: Includes/AdminPage.php:64
 msgid "Add Puddinq log screen to menu."
+msgstr "Puddinq logscherm aan menu toevoegen."
+
+#: Includes/ErrorPage.php:20
+msgid "Puddinq visitor log"
 msgstr ""
 
-#: Includes/Settings.php:456
+#: Includes/Settings.php:457
 msgid "Choose File"
-msgstr ""
+msgstr "Kies bestand"
 
-#: Includes/Settings.php:473
+#: Includes/Settings.php:474
 msgid "Choose Image"
-msgstr ""
+msgstr "Kies Afbeelding"
 
 #: vendor/plugin-update-checker/github-checker.php:119
 msgid "There is no changelog available."
-msgstr ""
+msgstr "Er is geen changelog beschikbaar"
 
 #: vendor/plugin-update-checker/plugin-update-checker.php:763
 msgid "Check for updates"
-msgstr ""
+msgstr "Controleer op updates"
 
 #: vendor/plugin-update-checker/plugin-update-checker.php:807
 msgid "This plugin is up to date."
-msgstr ""
+msgstr "Deze plugin is up to date"
 
 #: vendor/plugin-update-checker/plugin-update-checker.php:809
 msgid "A new version of this plugin is available."
-msgstr ""
+msgstr "Er is een nieuwe versie van deze plugin beschikbaar"
 
 #: vendor/plugin-update-checker/plugin-update-checker.php:811
 #, php-format
 msgid "Unknown update checker status \"%s\""
-msgstr ""
+msgstr "Onbekende update status \"%s\""
 
 #. Plugin Name of the plugin/theme
 msgid "Pu Visitor Log"

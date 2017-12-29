@@ -1,26 +1,24 @@
-# [pu-visitor-log](https://www.puddinq.mobi)
+# [pu-visitor-log](https://www.puddinq.com/plugins/pu-visitor-log/)
 
 [![puddinq](http://www.puddinq.nl/wip/netwerk-monitor.jpg)](http://www.puddinq.mobi)
 
-Simple log plugin [puddinq.com](https://www.puddinq.com).
+Simple log plugin by [puddinq.com](https://www.puddinq.com).
 
-* Project: [https://github.com/wonder32/pu-visitor-log/](https://bitbucket.org/newfountain_rep/netwerk-monitor/)
-* Website: [puddinq.nl](https://www.newfountain.nl).
-* Author : [wonder32](https://puddinq.mobi/wip/profiel/)
+ label                   | value                                          
+------------------------- | ---------------------------------------------
+Project:                | [https://github.com/wonder32/pu-visitor-log/](https://bitbucket.org/newfountain_rep/netwerk-monitor/)
+Website:                | [puddinq.nl](https://www.puddinq.com).
+Author :                | [wonder32](https://www.puddinq.nl/wip/stefan-schotvanger/)
+Latest version data :   | [versioninfo](http://plugins.puddinq.com/updates/?action=get_metadata&slug=pu-visitor-log)
 
 ## Features
 
 ### Admin view
-* options page for setting all options (settings->visitor log).
+* Activate default WordPress debug log functionality.
+* Enable admin page to view logs
 
 ### Public view
 * none
-
-### Plugin setup (automatic):
-* create options
-
-### Plugin removal (automatic):
-* remove options
 
 
 ### Wordpress compatibility tested for version:
@@ -35,32 +33,3 @@ actions | contents
 filters | contents
 ------------ | -------------
  |
-
-
-
-## changelog
-
-=== 0.0.5 Object orientated  ===
-* autoloader
-* Object orientated
-* PVL namespave
-* language files
-* (de)activation
-
-## 0.0.4 settings (26 july, 2016)
-* working settings group
-* register setting linked to settings group
-
-## 0.0.3 (de)activation (24 july, 2016)
-* (de)activation class
-* register (de)activation
-* save some options
-
-## 0.0.2 admin page (23 july, 2016)
-* update functionality
-* admin page
-
-## 0.0.1 (22 july, 2016)
-* Initial commit
-* Commit git files README, LICENSE etc.
-* Commit [WONDER32 / pu-visitor-log](https://www.puddinq.nl/wip/stefan-schotvanger/)

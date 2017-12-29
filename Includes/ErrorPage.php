@@ -3,11 +3,11 @@
 namespace Pvl\Includes;
 
 class ErrorPage {
-	private $settings;
+	private $options;
 
-	public function __construct($settings) {
-		$this->settings = $settings;
-		if (isset($this->settings['activated']) && isset($this->settings['activated']['pu_log'])) {
+	public function __construct($options) {
+		$this->options = $options;
+		if (isset($this->options['activated']) && isset($this->options['activated']['pu_log'])) {
 			$this->create_page();
 		}
 
@@ -15,7 +15,7 @@ class ErrorPage {
 
 	// register menu
 	public function create_page() {
-		if ($this->settings['activated']['pu_log'] === 'pu_log') {
+		if ($this->options['activated']['pu_log'] === 'pu_log') {
 			add_menu_page(
 				__( 'Puddinq visitor log', 'pu-visitor-log' ),
 				__( 'Pu visitor log', 'pu-visitor-log' ),

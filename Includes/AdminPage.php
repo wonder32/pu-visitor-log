@@ -4,10 +4,14 @@ namespace Pvl\Includes;
 
 class AdminPage
 {
-	private $Settings;
+	private $settings;
+	private $options;
 
-    public function __construct()
+	private $log;
+
+    public function __construct($options)
     {
+	    $this->options = $options;
         $this->create_page();
         $this->registerOptions();
     }
@@ -18,35 +22,36 @@ class AdminPage
         add_submenu_page(
             'options-general.php',
 	        __( 'Puddinq Visitor Log Settings.', 'pu-visitor-log' ),
-	        __( 'Pu visitor log'),
-	        __( 'manage_options'),
-	        __( 'pu-visitor-log'),
-            array($this, 'pu_options') //function
+	        __( 'Pu visitor log', 'pu-visitor-log' ),
+	        'manage_options',
+	        __( 'pu-visitor-log', 'pu-visitor-log' ),
+            array($this, 'pageOutput') //function
         );
 
 
     }
 
     // page output
-    public function pu_options()
+    public function pageOutput()
     {
         echo '<div class="wrap">';
         echo '<h2>Pu Visitor Log</h2>';
-        // Display whatever it is you want to show.
-        echo '<form id="pu_visitor_settings" action="options.php" method="post">';
-        settings_fields('pu-visitor-log');
-        do_settings_sections('pu-visitor-log');
-        submit_button('Opslaan', 'primary', 'ng_ondernemersvereniging_submit');
-        echo '</form>';
+	    $this->settings->show_navigation();
+	    $this->settings->script();
+	    $this->settings->show_forms();
+
+	    $this->log = new Log($this->options);
+	    $this->log->result();
+
         echo '</div>';
     }
 
     public function registerOptions() {
 
-    	$this->Settings = new Settings();
+    	$this->settings = new Settings();
 
 	    // Section: Basic Settings.
-	    $this->Settings->add_section(
+	    $this->settings->add_section(
 		    array(
 			    'id'    => 'pu-visitor-log',
 			    'title' => __( 'Settings.', 'pu-visitor-log' ),
@@ -54,7 +59,7 @@ class AdminPage
 		    )
 	    );
 
-	    $this->Settings->add_field(
+	    $this->settings->add_field(
 		    'pu-visitor-log',
 		    array(
 			    'id'      => 'activated',

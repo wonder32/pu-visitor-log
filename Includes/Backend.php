@@ -15,7 +15,7 @@ class Backend
 {
     private $version = PVLVERSION;
     
-    private $settings;
+    private $options;
     private $error_page;
     private $admin_page;
 
@@ -23,7 +23,7 @@ class Backend
 	{
 		$this->filter = new Filter();       // hook to actions and filters
 
-		$this->settings = get_option('pu-visitor-log');
+		$this->options = get_option('pu-visitor-log');
 
 		if (is_admin()) {
 			$this->startActivation();           // (de)activation hooks
@@ -47,8 +47,8 @@ class Backend
 	}
 
 	public function loadErrorPage() {
-		if (false != $this->settings) {
-			$this->error_page = new ErrorPage($this->settings);
+		if (false != $this->options) {
+			$this->error_page = new ErrorPage($this->options);
 		}
 	}
 
@@ -98,7 +98,7 @@ class Backend
 
     public function loadAdminPage() {
 
-        $this->admin_page = new AdminPage();
+        $this->admin_page = new AdminPage($this->options);
 
     }
 }
