@@ -40,8 +40,8 @@ class AdminPage
 	    $this->settings->script();
 	    $this->settings->show_forms();
 
-	    $this->log = new Log($this->options);
-	    $this->log->result();
+	    $this->log = new Log();
+	    $this->log->result($this->options);
 
         echo '</div>';
     }

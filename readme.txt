@@ -31,7 +31,7 @@ Just install the zip any way your are custom with, updates will be served in the
 ## changelog
 
 === 0.0.6 Optimization  ===
-*
+* ajax refresh
 
 === 0.0.5 Object orientated  ===
 * autoloader

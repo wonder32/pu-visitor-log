@@ -13,7 +13,6 @@ namespace Pvl\Includes;
 
 class Backend
 {
-    private $version = PVLVERSION;
     
     private $options;
     private $error_page;
@@ -29,8 +28,10 @@ class Backend
 			$this->startActivation();           // (de)activation hooks
 			$this->initAdmin();
 			$this->check_for_updates();
+			if ( isset( $this->options['activated'] ) && isset( $this->options['activated']['pu_log'] ) ) {
+				$ajax = new Ajax;
+			}
 		}
-
 		$this->filter->run();
 	}
 

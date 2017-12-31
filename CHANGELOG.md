@@ -1,5 +1,5 @@
 === 0.0.6 Optimization  ===
-*
+* ajax refresh
 
 === 0.0.5 Object orientated  ===
 * autoloader

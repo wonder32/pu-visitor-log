@@ -3,7 +3,7 @@
 Plugin Name: Pu Visitor Log
 Plugin URI:  https://www.puddinq.com/plugins/pu-visitor-log/
 Description: Admin dashboard plugin for puddinq sites
-Version:     0.0.5
+Version:     0.0.6
 Author:      Stefan Schotvanger
 Author URI:  https://www.puddinq.nl/wip/stefan-schotvanger/
 License:     WTFPL
@@ -14,7 +14,6 @@ Text Domain: pu-visitor-log
 
 
 use Pvl\Includes\Backend;
-use Pvl\Includes\Log;
 
 
 // If this file is called directly, abort.
@@ -31,7 +30,6 @@ require_once 'vendor/autoload.php';
 define ('PVLADIR', plugin_dir_path(__FILE__));
 define ('PVLFILE', __FILE__);
 define ('PVLNAME', 'pu-visitor-log');
-define ('PVLVERSION', '0.0.5');
 
 
 // start the show

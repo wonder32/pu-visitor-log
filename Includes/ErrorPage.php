@@ -4,12 +4,17 @@ namespace Pvl\Includes;
 
 class ErrorPage {
 	private $options;
+	private $filter;
 
 	public function __construct($options) {
 		$this->options = $options;
 		if (isset($this->options['activated']) && isset($this->options['activated']['pu_log'])) {
 			$this->create_page();
 		}
+
+		$this->filter = new Filter;
+		$this->filter->add_action( 'admin_enqueue_scripts', $this, 'load_error_scripts' );
+		$this->filter->run();
 
 	}
 
@@ -39,13 +44,30 @@ class ErrorPage {
 		echo '</div>';
 	}
 
+	public function load_error_scripts($hook) {
+
+		if ($hook !== 'toplevel_page_pu_visitor_log') {
+			return;
+		}
+
+		$value = array(
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+		    'nonce' => wp_create_nonce('ajax_nonce')
+		);
+
+		wp_enqueue_style( 'pu-log-admin', plugins_url('css/style.css', PVLFILE) );
+		wp_enqueue_script( 'pu-log-admin', plugins_url('js/script.js', PVLFILE) );
+		wp_localize_script('pu-log-admin', 'pu_ajax', $value);
+	}
+
+
+
 	public function logScreen() {
 
 		$file = WP_CONTENT_DIR . '/debug.log';
 		$bytes=filesize($file);
 		//how many lines?
-		$linecount=20;
-
+		$linecount=600;
 		//what's a typical line length?
 		$length=80;
 
@@ -94,43 +116,31 @@ class ErrorPage {
 		}
 		fclose($fp);
 
-		$style = <<<HTML
-		<style>
-			div.pulog-screen {
-				border: 3px solid #fff;
-				border-radius: 3px;
-				padding: 5px;
-				color:gray;
-				background-color: #0f0f0f;
-				overflow: scroll;
-				height:100%;
-			}
-			
-			ul.pulog-screen li {
-		      overflow: hidden; 
-			  text-overflow: ellipsis;
-			  white-space: nowrap;
-			}
-			
-			ul.pulog-screen li.hot {
-				color: red;
-				font-weight: 600;
-			}
-		
-		</style>
-HTML;
-
-		echo $style;
 		echo '<div class="pulog-screen">';
+		echo '<div id="bytes-pulog-screen" style="display:none">' . $bytes . '</div>';
 		echo '<ul class="pulog-screen">';
+
+		$number = 0;
 		foreach ($lines as $id => $line) {
 
-			$class = preg_match('[Notice|Warning|Fatal ]', $line) ? ' class="hot"' : '';
+			if (preg_match('[Notice|Warning|Fatal]', $line, $matches)) {
+				++$number;
+				$class = "hot hot-{$matches[0]}";
+				$id = "id='hot-{$number}'";
+				$pos = strpos($line, ' in ') + 4;
+				$line = substr($line, 0, $pos) . '<br>' . substr($line, $pos);
 
-			echo "<li{$class}>{$line}</li>";
+			} else {
+				$class = "not not-{$number}";
+				$line = substr($line, 26);
+			}
+
+			echo "<li class='{$class}'{$id}>{$line}</li>";
 		}
-		echo '</div>';
+		echo '<li><span class="blinking-cursor">.</span><span class="blinking-cursor2">.</span></li>';
 		echo '</ul>';
+		echo '</div>';
+
 
 
 	}
