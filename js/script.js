@@ -1,13 +1,16 @@
 
 
 var pu_ajax;
+var bytes;
+
 // start one main function with some extra's
 (function ($, root, undefined) {
 
     'use strict';
 
-    function get_ajax() {
-        var bytes = $('#bytes-pulog-screen').html();
+    function get_ajax(send_task) {
+        var task = (typeof send_task === 'undefined') ? 'refresh' : send_task;
+        bytes = parseInt($('#bytes-pulog-screen').html());
         // ajax call
         jQuery.ajax({
             // we have set aj_data with localize to the enqueue file
@@ -16,16 +19,22 @@ var pu_ajax;
             data : {
                 action : 'pu_ajax',
                 nonce  : pu_ajax.nonce,
-                bytes  : bytes
+                bytes  : bytes,
+                task  : task
             },
 
             success : function( response ) {
-                if (response.update == 'ok') {
+                console.table(response);
+                if (response.update == 'true') {
                     $('ul.pulog-screen').html(response.output);
-                    $('#bytes-pulog-screen').html(bytes);
+                    $('#bytes-pulog-screen').html(response.bytes);
                 }
             }
         });
+    }
+
+    function fader() {
+        setInterval(get_ajax, 9000);
     }
 
     /*
@@ -34,14 +43,16 @@ var pu_ajax;
 
     jQuery(document).ready(function() {
 
-        function fader() {
-            setInterval(get_ajax, 9000);
-        }
+
         setTimeout(fader, 5000);
 
         $('.hot').on('click', function(){
             var row = $(this).prop('id').replace('hot-', '');
             $('.not-' + row).toggle();
+        });
+
+        $('.pu-log-size span').on('click', function(){
+            get_ajax('delete');
         });
 
         $(window).resize(function () {

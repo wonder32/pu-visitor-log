@@ -52,7 +52,7 @@ class ErrorPage {
 
 		$value = array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
-		    'nonce' => wp_create_nonce('ajax_nonce')
+		    'nonce' => wp_create_nonce('0)AT5r}A4H^X')
 		);
 
 		wp_enqueue_style( 'pu-log-admin', plugins_url('css/style.css', PVLFILE) );
@@ -116,6 +116,11 @@ class ErrorPage {
 		}
 		fclose($fp);
 
+		$base = log($bytes) / log(1024);
+		$suffix = array("", "kb", "MB", "Gb", "Tb")[floor($base)];
+		$omvang = number_format(pow(1024, $base - floor($base)), 2) . $suffix;
+
+		echo "<div class='pu-log-size'>Your log is {$omvang}<span> clear now</span></div>";
 		echo '<div class="pulog-screen">';
 		echo '<div id="bytes-pulog-screen" style="display:none">' . $bytes . '</div>';
 		echo '<ul class="pulog-screen">';

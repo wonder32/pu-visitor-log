@@ -18,15 +18,31 @@ class Ajax {
 	}
 
 	public function pu_ajax() {
-		check_ajax_referer('ajax_nonce', 'nonce');
 
-		$return = array('update' => 'ok');
+		// check nonce
+		check_ajax_referer('0)AT5r}A4H^X', 'nonce');
+
+		switch ($_POST['task']) {
+			case 'refresh':
+				$this->refresh();
+				break;
+			case 'delete':
+				$this->delete();
+				break;
+
+		}
+
+
+	}
+
+	public function refresh() {
+		$return = array('update' => 'false');
 
 		$file = WP_CONTENT_DIR . '/debug.log';
-		$return['bytes'] = $bytes = filesize($file);
+		$return['bytes'] = filesize($file);
 
-		if ($bytes === (int) $_POST['bytes']) {
-			wp_send_json(array('update' => 'same'));
+		if ($return['bytes'] == (int) $_POST['bytes']) {
+			wp_send_json($return);
 		}
 		//how many lines?
 		$linecount=600;
@@ -52,7 +68,7 @@ class Ajax {
 			//we might seek mid-line, so read partial line
 			//if our offset means we're reading the whole file,
 			//we don't skip...
-			if ($offset<$bytes)
+			if ($offset<$return['bytes'])
 				fgets($fp);
 
 			//read all following lines, store last x
@@ -70,7 +86,7 @@ class Ajax {
 
 			//if we read the whole file, we're done, even if we
 			//don't have enough lines
-			if ($offset>=$bytes)
+			if ($offset>=$return['bytes'])
 				$complete=true;
 			else
 				$offset_factor*=2; //otherwise let's seek even further back
@@ -100,7 +116,36 @@ class Ajax {
 		$output .= '<li><span class="blinking-cursor">.</span><span class="blinking-cursor2">.</span></li>';
 
 		$return['output'] = $output;
-		$return['old_bytes'] = $_POST['bytes'];
+		$return['old_bytes'] = intval($_POST['bytes']);
+		$return['update'] = 'true';
+
+		wp_send_json($return);
+	}
+
+	public function delete() {
+		$return = array('update' => 'false');
+
+		$file = WP_CONTENT_DIR . '/debug.log';
+
+		$output = '<li><span class="blinking-cursor">.</span><span class="blinking-cursor2">.</span></li>';
+
+		$handle = @fopen( $file, 'w' );
+
+		@fwrite( $handle, '' );
+
+		@fclose( $handle );
+
+		$chmod = defined( 'FS_CHMOD_FILE' ) ? FS_CHMOD_FILE : 0644;
+		@chmod( $file, $chmod );
+
+		$return['bytes'] = filesize($file);
+
+
+
+		$return['output'] = $output;
+		$return['old_bytes'] = intval($_POST['bytes']);
+		$return['update'] = 'true';
+
 		wp_send_json($return);
 	}
 }
