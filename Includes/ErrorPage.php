@@ -121,8 +121,8 @@ class ErrorPage {
 		$omvang = number_format(pow(1024, $base - floor($base)), 2) . $suffix;
 
 		echo "<div class='pu-log-size'>Your log is {$omvang}<span> clear now</span></div>";
-		echo '<div class="pulog-screen">';
 		echo '<div id="bytes-pulog-screen" style="display:none">' . $bytes . '</div>';
+		echo '<div class="pulog-screen">';
 		echo '<ul class="pulog-screen">';
 
 		$number = 0;

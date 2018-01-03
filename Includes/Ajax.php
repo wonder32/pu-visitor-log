@@ -29,19 +29,19 @@ class Ajax {
 			case 'delete':
 				$this->delete();
 				break;
-
 		}
-
 
 	}
 
 	public function refresh() {
+
 		$return = array('update' => 'false');
 
 		$file = WP_CONTENT_DIR . '/debug.log';
+
 		$return['bytes'] = filesize($file);
 
-		if ($return['bytes'] == (int) $_POST['bytes']) {
+		if ($return['bytes'] === (int) $_POST['bytes']) {
 			wp_send_json($return);
 		}
 		//how many lines?
@@ -113,7 +113,6 @@ class Ajax {
 
 			$output .= "<li class='{$class}'{$id}>{$line}</li>";
 		}
-		$output .= '<li><span class="blinking-cursor">.</span><span class="blinking-cursor2">.</span></li>';
 
 		$return['output'] = $output;
 		$return['old_bytes'] = intval($_POST['bytes']);
@@ -127,8 +126,7 @@ class Ajax {
 
 		$file = WP_CONTENT_DIR . '/debug.log';
 
-		$output = '<li><span class="blinking-cursor">.</span><span class="blinking-cursor2">.</span></li>';
-
+		$output = '';
 		$handle = @fopen( $file, 'w' );
 
 		@fwrite( $handle, '' );
