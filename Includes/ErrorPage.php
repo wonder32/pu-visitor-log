@@ -120,8 +120,10 @@ class ErrorPage {
 		$suffix = array("", "kb", "MB", "Gb", "Tb")[floor($base)];
 		$omvang = number_format(pow(1024, $base - floor($base)), 2) . $suffix;
 
-		echo "<div class='pu-log-size'>Your log is {$omvang}<span> clear now</span></div>";
+		echo "<div class='pu-log-size'>Your log is {$omvang}<span>Clear now</span></div>";
 		echo '<div id="bytes-pulog-screen" style="display:none">' . $bytes . '</div>';
+		echo "<div class='pu-log-refresh'><span>Refresh activated</span></div>";
+		echo '<div id="pu-log-refresh-status" style="display:none">off</div>';
 		echo '<div class="pulog-screen">';
 		echo '<ul class="pulog-screen">';
 
@@ -142,7 +144,6 @@ class ErrorPage {
 
 			echo "<li class='{$class}'{$id}>{$line}</li>";
 		}
-		echo '<li><span class="blinking-cursor">.</span><span class="blinking-cursor2">.</span></li>';
 		echo '</ul>';
 		echo '</div>';
 

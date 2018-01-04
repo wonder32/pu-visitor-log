@@ -2,6 +2,7 @@
 
 var pu_ajax;
 var bytes;
+var intVal;
 
 // start one main function with some extra's
 (function ($, root, undefined) {
@@ -11,6 +12,7 @@ var bytes;
     function get_ajax(send_task) {
         var task = (typeof send_task === 'undefined') ? 'refresh' : send_task;
         var bytes = parseInt($('#bytes-pulog-screen').html());
+        var start = new Date();
         // ajax call
         jQuery.ajax({
             // we have set aj_data with localize to the enqueue file
@@ -19,6 +21,7 @@ var bytes;
             data : {
                 beforeSend: function()
                 {
+                    $('.pu-added').remove('.pu-added');
                     $('.pu-added').remove('.pu-added');
                     $('ul.pulog-screen').append('<li class="pu-added"><span class="blinking-cursor">.</span><span class="blinking-cursor2">.</span></li>');
                     $("div.pulog-screen").scrollTop($("div.pulog-screen")[0].scrollHeight);
@@ -31,12 +34,13 @@ var bytes;
 
             success : function( response ) {
                 console.table(response);
+                var time = Math.floor((new Date() - start) / 1000);
                 $('.pu-added').remove('.pu-added');
                 if (response.update == 'true') {
                     $('ul.pulog-screen').html(response.output);
                     $('#bytes-pulog-screen').html(response.bytes);
                 } else {
-                    $('div.pulog-screen').append('<span class="pu-added">No new results</span>');
+                    $('div.pulog-screen').append('<span class="pu-added">No new results ' + time + ' seconds</span>');
                 }
                 $("div.pulog-screen").scrollTop($("div.pulog-screen")[0].scrollHeight);
             },
@@ -48,8 +52,20 @@ var bytes;
         });
     }
 
-    function fader() {
-        setInterval(get_ajax, 9000);
+    function refresh() {
+        var status = $('#pu-log-refresh-status');
+        var button = $('.pu-log-refresh span');
+        if (status.html() === 'off') {
+            intVal = setInterval(get_ajax, 9000);
+            status.html('on');
+            button.html('Refresh activated');
+            button.removeClass('deactivated');
+        } else {
+            clearInterval(intVal);
+            status.html('off');
+            button.html('Refresh deactivated');
+            button.addClass('deactivated');
+        }
     }
 
     /*
@@ -59,7 +75,7 @@ var bytes;
     jQuery(document).ready(function() {
 
 
-        setTimeout(fader, 5000);
+        setTimeout(refresh, 5000);
 
         // stachtrace toggle
         var screenList = $('ul.pulog-screen');
@@ -71,6 +87,10 @@ var bytes;
         // clean wp-debug.log
         $('.pu-log-size span').on('click', function(){
             get_ajax('delete');
+        });
+
+        $('.pu-log-refresh span').on('click', function(){
+            refresh();
         });
 
 

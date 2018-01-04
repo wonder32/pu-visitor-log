@@ -6,24 +6,35 @@ div.wrap {
 /**
 buttons
  */
-
+.pu-log-refresh,
 .pu-log-size {
     text-align: right;
+    display: inline-block;
+    margin: 0 5px;
 }
 
+
+.pu-log-refresh span,
 .pu-log-size span {
-    color: green;
-    font-weight: 600;
-    background: black;
-    padding: 0 6px 3px;
-    border-radius: 3px;
-}
-
-.pu-log-size span:hover {
-    cursor: pointer;
     background: orange;
     color: black;
+    font-weight: 600;
+    padding: 0 6px 3px;
+    border-radius: 3px;
+    display: inline-block;
 }
+
+.pu-log-refresh span.deactivated{
+    background: antiquewhite;
+}
+
+.pu-log-refresh span:hover,
+.pu-log-size span:hover {
+    cursor: pointer;
+    color: green;
+    background: black;
+}
+
 
 div.pulog-screen {
     border: 3px solid #fff;
