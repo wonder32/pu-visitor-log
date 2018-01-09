@@ -1,3 +1,6 @@
+=== 0.0.7 ßeta  ===
+* ßeta
+
 === 0.0.6 Optimization  ===
 * ajax refresh
 

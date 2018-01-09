@@ -34,7 +34,7 @@ var intVal;
 
             success : function( response ) {
                 console.table(response);
-                var time = Math.floor((new Date() - start) / 1000);
+                var time = Math.ceil((new Date() - start) / 1000);
                 $('.pu-added').remove('.pu-added');
                 if (response.update == 'true') {
                     $('ul.pulog-screen').html(response.output);
