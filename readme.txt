@@ -29,6 +29,9 @@ Just install the zip any way your are custom with, updates will be served in the
 == Changelog ==
 
 ## changelog
+=== 0.0.8 php7  ===
+* compatibility update
+
 === 0.0.7 ßeta  ===
 * ßeta
 

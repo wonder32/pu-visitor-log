@@ -3,7 +3,7 @@
 Plugin Name: Pu Visitor Log
 Plugin URI:  https://www.puddinq.com/plugins/pu-visitor-log/
 Description: Admin dashboard plugin for puddinq sites
-Version:     0.0.7
+Version:     0.0.8
 Author:      wonder32
 Author URI:  https://www.puddinq.nl/wip/stefan-schotvanger/
 License:     WTFPL

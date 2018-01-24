@@ -146,7 +146,9 @@ class Settings {
 				// Build HTML.
 				$section['desc'] = '<div class="inside">' . $section['desc'] . '</div>';
 				// Create the callback for description.
-				$callback = create_function( '', 'echo "' . str_replace( '"', '\"', $section['desc'] ) . '";' );
+				$callback = function() use ($section) {
+				    echo $section['desc'];
+				};
 			} elseif ( isset( $section['callback'] ) ) {
 				$callback = $section['callback'];
 			} else {
@@ -566,24 +568,24 @@ class Settings {
 	 */
 	function show_forms() {
 		?>
-		<div class="metabox-holder">
+        <div class="metabox-holder">
 			<?php foreach ( $this->sections_array as $form ) { ?>
-				<!-- style="display: none;" -->
-				<div id="<?php echo $form['id']; ?>" class="group" >
-					<form method="post" action="options.php">
+                <!-- style="display: none;" -->
+                <div id="<?php echo $form['id']; ?>" class="group" >
+                    <form method="post" action="options.php">
 						<?php
 						do_action( 'wsa_form_top_' . $form['id'], $form );
 						settings_fields( $form['id'] );
 						do_settings_sections( $form['id'] );
 						do_action( 'wsa_form_bottom_' . $form['id'], $form );
 						?>
-						<div style="padding-left: 10px">
+                        <div style="padding-left: 10px">
 							<?php submit_button(); ?>
-						</div>
-					</form>
-				</div>
+                        </div>
+                    </form>
+                </div>
 			<?php } ?>
-		</div>
+        </div>
 		<?php
 		$this->script();
 	}
@@ -594,7 +596,7 @@ class Settings {
 	 */
 	function script() {
 		?>
-		<script>
+        <script>
             jQuery(document).ready(function($) {
                 //Initiate Color Picker
                 // $('.wp-color-picker-field').wpColorPicker();
@@ -659,14 +661,14 @@ class Settings {
                     self.next().parent().children( '.wpsa-image-preview' ).children( 'img' ).attr( 'src', self.val() );
                 })).change();
             });
-		</script>
+        </script>
 
-		<style type="text/css">
-			/** WordPress 3.8 Fix **/
-			.form-table th { padding: 20px 10px; }
-			#wpbody-content .metabox-holder { padding-top: 5px; }
-			.wpsa-image-preview img{height: auto; max-width: 70px;}
-		</style>
+        <style type="text/css">
+            /** WordPress 3.8 Fix **/
+            .form-table th { padding: 20px 10px; }
+            #wpbody-content .metabox-holder { padding-top: 5px; }
+            .wpsa-image-preview img{height: auto; max-width: 70px;}
+        </style>
 		<?php
 	}
 }

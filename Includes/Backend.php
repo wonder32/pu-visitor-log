@@ -39,6 +39,7 @@ class Backend
 		$this->filter->add_action( 'plugins_loaded', $this, 'load_textdomain' );
 		$this->filter->add_action( 'admin_menu', $this, 'loadAdminPage' );
 		$this->filter->add_action( 'admin_menu', $this, 'loadErrorPage' );
+		$this->filter->add_filter( 'plugin_row_meta', $this, 'customPluginRowMeta', 10, 2 );
 	}
 
 
@@ -102,4 +103,19 @@ class Backend
         $this->admin_page = new AdminPage($this->options);
 
     }
+
+	public function customPluginRowMeta($links, $file)
+	{
+
+		if ( strpos( $file, 'pu-visitor-log.php' ) !== false ) {
+			$newLinks = array(
+				'<a href="https://www.puddinq.com/plugins/pu-visitor-log/" target="_blank">Documentation</a>',
+				'<a href="' . admin_url('admin.php?page=pu-visitor-log') . '">Settings</a>'
+			);
+
+			$links = array_merge($links, $newLinks);
+		}
+
+		return $links;
+	}
 }
